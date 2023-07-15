@@ -34,3 +34,22 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: temporal-cluster
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alexandrevilain/temporal-operator-demo-argocd.git
+    targetRevision: HEAD
+    path: temporal-cluster
+  destination:
+    namespace: demo
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

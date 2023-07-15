@@ -1,0 +1,35 @@
+apiVersion: temporal.io/v1beta1
+kind: TemporalCluster
+metadata:
+  name: prod
+  namespace: demo
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  version: 1.20.3
+  numHistoryShards: 1
+  persistence:
+    defaultStore:
+      sql:
+        user: temporal
+        pluginName: postgres
+        databaseName: temporal
+        connectAddr: postgres.demo.svc.cluster.local:5432
+        connectProtocol: tcp
+      passwordSecretRef:
+        name: postgres-password
+        key: PASSWORD
+    visibilityStore:
+      sql:
+        user: temporal
+        pluginName: postgres
+        databaseName: temporal_visibility
+        connectAddr: postgres.demo.svc.cluster.local:5432
+        connectProtocol: tcp
+      passwordSecretRef:
+        name: postgres-password
+        key: PASSWORD
+  ui:
+    enabled: true
+  admintools:
+    enabled: true
