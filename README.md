@@ -1,0 +1,1 @@
+# temporal-operator-demo-argocd

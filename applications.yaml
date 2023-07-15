@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-config
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alexandrevilain/temporal-operator-demo-argocd.git
+    targetRevision: HEAD
+    path: argocd-config
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: temporal-operator
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alexandrevilain/temporal-operator-demo-argocd.git
+    targetRevision: HEAD
+    path: temporal-operator
+  destination:
+    namespace: temporal-system
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true

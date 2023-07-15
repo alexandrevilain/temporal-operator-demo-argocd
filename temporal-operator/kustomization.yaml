@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+# It would be better to install cert-manager using an ArgoCD application with the official helm chart.
+- https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.yaml
+- https://github.com/alexandrevilain/temporal-operator/releases/v1.13.3/download/temporal-operator.crds.yaml
+- https://github.com/alexandrevilain/temporal-operator/releases/v1.13.3/download/temporal-operator.yaml
