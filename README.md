@@ -56,7 +56,7 @@ Then you should see the application on the ArgoCD web UI:
 
 ![ArgoCD WebUI showing temporal-operator in healthy state](./.github/assets/temporal-operator-app.png)
 
-*Note that ArgoCD shows 6 warnings. To fix that an make the Application more "production-ready" consider creating a separate application to install cert-manager using the official helm chart.*
+*Note that ArgoCD shows 6 warnings. To fix this and make the Application more "production-ready" consider creating a separate application to install cert-manager using the official helm chart.*
 
 ## Step 4: Install demo temporal cluster application
 
